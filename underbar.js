@@ -1,6 +1,7 @@
 // Returns the given value. Seems pointless perhaps but see its use below for providing a default, no-op callback.
 const identity = function (val) {
   // Your code goes here
+  return val;
 };
 
 // Returns the first n elements of the given array.
@@ -26,6 +27,7 @@ const isArrayLike = function (obj) {
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 const each = function (obj, callback=identity) {
   // Your code goes here
+  if
 };
 
 // Return the results of applying the callback to each element.
