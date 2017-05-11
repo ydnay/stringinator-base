@@ -81,7 +81,9 @@ const pluck = function (obj, key) {
 // (accumulator, value, index|key, collection).
 const reduce = function (obj, callback=identity, initialValue) {
   // Your code goes here
-  let accumulator = initialValue;
+  let accumulator;
+  if (!initialValue) {accumulator = 0;} else {accumulator = initialValue;}
+
   each(obj, (elem) => {
     accumulator = callback(elem, accumulator);
   });
