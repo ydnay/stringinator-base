@@ -7,6 +7,7 @@ const identity = function (val) {
 // Returns the first n elements of the given array.
 const first = function (array, n = 1) {
   // Your code goes here
+  return n === 1 ? array[0] : array.slice(0, n);
 };
 
 // Returns the last n elements of the given array.
@@ -27,7 +28,6 @@ const isArrayLike = function (obj) {
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 const each = function (obj, callback=identity) {
   // Your code goes here
-  if
 };
 
 // Return the results of applying the callback to each element.
