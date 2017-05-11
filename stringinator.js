@@ -30,6 +30,7 @@ const hasChar = function (str, target) {
 
 const isOnlyDigits = function (str) {
   // Your code goes here
+  return _.every(str, (elem) => typeof elem === 'number');
 };
 
 const filterToOnlyDigits = function (str) {
