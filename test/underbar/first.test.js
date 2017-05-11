@@ -4,7 +4,7 @@ describe('first()', () => {
   it('returns the first element of an array', () => {
     // Your code goes here
     const nums = [1, 2, 3, 4];
-    expect(_.first(nums, 1)).toEqual(1);
+    expect(_.first(nums, 1)).toEqual([1]);
   });
 
   it('returns the first 2 elements of an array', () => {

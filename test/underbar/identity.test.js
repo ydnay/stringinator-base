@@ -8,13 +8,13 @@ describe('identity()', () => {
 
   it('returns the number if given a number', () => {
     // Your code goes here
-    expect(_.indetity(2)).toBe(2);
+    expect(_.identity(2)).toBe(2);
   });
 
   it('returns the same array if given an array', () => {
     // Your code goes here
     const array = [1, 2, 3];
-    expect(_.idintity(array)).toBe(array);
+    expect(_.identity(array)).toBe(array);
   });
 
   it('returns the same object if given an object', () => {
