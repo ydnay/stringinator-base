@@ -31,7 +31,6 @@ const indexOf = function (array, target, fromIndex=0) {
 
 const isArrayLike = function (obj) {
   // Your code goes here
-  // TODO: check if obj is an array or if obj.len is defined
   const length = obj['length'];
   return typeof length === 'number' && length >= 0;
 };
@@ -41,8 +40,15 @@ const isArrayLike = function (obj) {
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 const each = function (obj, callback=identity) {
   // Your code goes here
-  for (var i = 0; i < obj.length; i++) {
-    callback(obj[i], i, obj);
+  // else needed in order to iterate through a non-array-like object
+  if (isArrayLike(obj)) {
+    for (var i = 0; i < obj.length; i++) {
+      callback(obj[i], i, obj);
+    }
+  } else {
+    for (let key in obj) {
+      callback(obj[key], key, obj);
+    }
   }
 };
 
