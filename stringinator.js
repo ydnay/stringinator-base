@@ -13,6 +13,13 @@ const last = function (str, n) {
 const removeChar = function (str, target) {
   // hint: use _.reject
   // Your code goes here
+  const arr = _.reject(str, (elem) => elem === target);
+  let res = '';
+  for (var i = 0; i < arr.length; i++) {
+    res += arr[i];
+  }
+
+  return res;
 };
 
 const hasChar = function (str, target) {
