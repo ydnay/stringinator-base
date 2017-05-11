@@ -4,13 +4,13 @@ describe('contains()', () => {
   it('returns true if an array contains the target', () => {
     // Your code goes here
     const nums = [1, 2, 3, 4];
-    expect(_.contains(nums, 2).toBe(true));
+    expect(_.contains(nums, 2)).toBe(true);
   });
 
   it('returns false if an array does not contain the target', () => {
     // Your code goes here
     const nums = [1, 2, 3, 4];
-    expect(_.contains(nums, 0)).toBe(false);
+    expect(_.contains(nums, 9)).toBe(false);
   });
 
   it('returns true if the target value is among the values of an object', () => {

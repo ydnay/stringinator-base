@@ -92,6 +92,7 @@ const reduce = function (obj, callback=identity, initialValue) {
 };
 
 // Return true if the object contains the target.
+// TODO: fix the function. Last test doesn't work
 const contains = function (obj, target) {
   // Your code goes here
   let res = indexOf(obj, target);
