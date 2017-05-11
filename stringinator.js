@@ -25,6 +25,7 @@ const removeChar = function (str, target) {
 const hasChar = function (str, target) {
   // hint: use _.some
   // Your code goes here
+  return _.some(str, (elem) => elem === target);
 };
 
 const isOnlyDigits = function (str) {
