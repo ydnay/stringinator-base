@@ -103,6 +103,8 @@ const contains = function (obj, target) {
 const every = function (obj, callback=identity) {
   // Your code goes here
   // TODO: make it stop if callback updates to false
+  // TODO: return false if no callback is provided
+
   let res = true;
   for (var i = 0; i < obj.length; i++) {
     res = callback(obj[i]);
