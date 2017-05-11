@@ -1,46 +1,48 @@
 const _ = require('./underbar');
 
-const first = function(str, n) {
+const first = function (str, n) {
   // Your code goes here
+  return n === undefined ? str[0] : str.slice(0, n);
 };
 
-const last = function(str, n) {
+const last = function (str, n) {
   // Your code goes here
+  return n === undefined ? str[str.length - 1] : str.slice(-n);
 };
 
-const removeChar = function(str, target) {
+const removeChar = function (str, target) {
   // hint: use _.reject
   // Your code goes here
 };
 
-const hasChar = function(str, target) {
+const hasChar = function (str, target) {
   // hint: use _.some
   // Your code goes here
 };
 
-const isOnlyDigits = function(str) {
+const isOnlyDigits = function (str) {
   // Your code goes here
 };
 
-const filterToOnlyDigits = function(str) {
+const filterToOnlyDigits = function (str) {
   // Your code goes here
 };
 
-const truncateString = function(val, maxLength) {
+const truncateString = function (val, maxLength) {
   // A freebie solution, this is the ONLY method here that doesn't use Underbar.
   return String(val).slice(0, maxLength);
 };
 
-const truncateLongItems = function(obj, maxLength) {
+const truncateLongItems = function (obj, maxLength) {
   // hint: use truncateString above
   // Your code goes here
 };
 
-const countChars = function(str) {
+const countChars = function (str) {
   // Your code goes here
 };
 
-const dedup = function(str) {
+const dedup = function (str) {
   // Your code goes here
 };
 
@@ -54,5 +56,5 @@ module.exports = {
   countChars: countChars,
   dedup: dedup,
   truncateLongItems: truncateLongItems,
-  truncateString: truncateString
+  truncateString: truncateString,
 };
