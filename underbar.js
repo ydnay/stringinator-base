@@ -32,7 +32,7 @@ const indexOf = function (array, target, fromIndex=0) {
 const isArrayLike = function (obj) {
   // Your code goes here
   // TODO: check if obj is an array or if obj.len is defined
-  const length = obj[length];
+  const length = obj['length'];
   return typeof length === 'number' && length >= 0;
 };
 
