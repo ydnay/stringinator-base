@@ -40,15 +40,9 @@ const isArrayLike = function (obj) {
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 const each = function (obj, callback=identity) {
   // Your code goes here
-  // else needed in order to iterate through a non-array-like object
-  if (isArrayLike(obj)) {
-    for (var i = 0; i < obj.length; i++) {
-      callback(obj[i], i, obj);
-    }
-  } else {
-    for (let key in obj) {
-      callback(obj[key], key, obj);
-    }
+  const values = Array.isArray(obj) ? obj : Object.values(obj);
+  for (var i = 0; i < values.length; i++) {
+    callback(values[i], i, values);
   }
 };
 
@@ -57,9 +51,10 @@ const each = function (obj, callback=identity) {
 const map = function (obj, callback=identity) {
   // Your code goes here
   let result = [];
-  for (var i = 0; i < obj.length; i++) {
-    result.push(callback(obj[i], i, obj));
-  }
+  const values = Array.isArray(obj) ? obj : Object.values(obj);
+  each(values, (elem) => {
+    result.push(callback(elem));
+  });
 
   return result;
 };
@@ -82,7 +77,7 @@ const pluck = function (obj, key) {
 const reduce = function (obj, callback=identity, initialValue) {
   // Your code goes here
   let accumulator;
-  if (!initialValue) {accumulator = 0;} else {accumulator = initialValue;}
+  if (initialValue === undefined) {accumulator = 0;} else {accumulator = initialValue;}
 
   each(obj, (elem) => {
     accumulator = callback(elem, accumulator);
@@ -92,38 +87,26 @@ const reduce = function (obj, callback=identity, initialValue) {
 };
 
 // Return true if the object contains the target.
-// TODO: fix the function. Last test doesn't work
 const contains = function (obj, target) {
   // Your code goes here
-  let res = indexOf(obj, target);
-  return res !== -1 ? true : false;
+  const values = Array.isArray(obj) ? obj : Object.values(obj);
+  return indexOf(values, target) !== -1;
 };
 
 // Return true if all the elements / object values are accepted by the callback.
 const every = function (obj, callback=identity) {
   // Your code goes here
-  // TODO: make it stop if callback updates to false
-  // TODO: return false if no callback is provided
-
-  let res = true;
-  for (var i = 0; i < obj.length; i++) {
-    res = callback(obj[i]);
-    if (res === false) {return false;}
-  }
-
-  return res;
+  return reduce(obj, function (currentVal, accumulator) {
+    return !!callback(currentVal) && accumulator;
+  }, true);
 };
 
 // Return true if even 1 element / object value is accepted by the callback.
 const some = function (obj, callback=identity) {
   // Your code goes here
-  let res = false;
-  for (var i = 0; i < obj.length; i++) {
-    res = callback(obj[i]);
-    if (res === true) {return true;}
-  }
-
-  return res;
+  return reduce(obj, function (currentVal, accumulator) {
+    return accumulator || !!callback(currentVal);
+  }, false);
 };
 
 // Return an array with all elements / object values that are accepted by the callback.
@@ -149,11 +132,13 @@ const reject = function (arr, callback=identity) {
 const uniq = function (obj) {
   // Your code goes here
   let res = [];
-  for (var i = 0; i < obj.length; i++) {
-    if (!contains(res, obj[i])) {
-      res.push(obj[i]);
+  let set = {};
+  each(obj, (elem) => {
+    if (!(elem in set)) {
+      set[elem] = elem;
+      res.push(elem);
     }
-  }
+  });
 
   return res;
 };

@@ -30,11 +30,13 @@ const hasChar = function (str, target) {
 
 const isOnlyDigits = function (str) {
   // Your code goes here
-  return _.every(str, (elem) => typeof elem === 'number');
+  return _.every(str, (elem) => !isNaN(parseInt(elem)));
 };
 
 const filterToOnlyDigits = function (str) {
   // Your code goes here
+  let digits = _.filter(str, (elem) => !isNaN(parseInt(elem)));
+  return digits.join('');
 };
 
 const truncateString = function (val, maxLength) {
@@ -45,14 +47,26 @@ const truncateString = function (val, maxLength) {
 const truncateLongItems = function (obj, maxLength) {
   // hint: use truncateString above
   // Your code goes here
+  return _.map(obj, (str) => truncateString(str, maxLength));
 };
 
 const countChars = function (str) {
   // Your code goes here
+  let obj = {};
+  _.each(str, (char) => {
+    if (!obj[char]) {
+      obj[char] = 1;
+    } else {
+      obj[char] += 1;
+    }
+  });
+
+  return obj;
 };
 
 const dedup = function (str) {
   // Your code goes here
+  return _.uniq(str).join('');
 };
 
 module.exports = {

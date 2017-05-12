@@ -28,7 +28,7 @@ describe('each()', () => {
       count += 1;
     });
 
-    expect(count).toBe(4);
+    expect(count).toBe(5);
   });
 
   it('iterates every property of an object, passing the value, the corresponding key, and the entire object to the callback', () => {
